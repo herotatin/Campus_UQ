@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Campus_UQ</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="texto_detalle_de_pelicula">Al ver que la vida en la
+Tierra está llegando a su fin, un grupo de exploradores decide
+embarcarse en la que puede ser la misión más importante de la historia
+de la humanidad y emprender un viaje más allá de nuestra galaxia en el
+que descubrirán si las estrellas pueden albergar el futuro de la raza
+humana...</string>
 </resources>
