@@ -13,6 +13,10 @@ import co.edu.uniquindio.android.electiva.campus_uq.R;
 import co.edu.uniquindio.android.electiva.campus_uq.vo.Noticia;
 
 /**
+ * Esta es DetalleNoticiaFragment del proyecto campus_UQ de la electiva de moviles
+ * @author: Jose Omar Colorado y Jesus Alberto Onofre
+ */
+/**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link DetalleNoticiaFragment.OnFragmentInteractionListener} interface
@@ -23,6 +27,7 @@ import co.edu.uniquindio.android.electiva.campus_uq.vo.Noticia;
 public class DetalleNoticiaFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // atributos de DetalleNoticiaFragment
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Noticia noticia;
@@ -66,7 +71,12 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 
 
     }
-
+    /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     * @param sabedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,13 +84,22 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         return inflater.inflate(R.layout.fragment_detalle_noticia, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    /**
+     * Metodo onButtonPressed
+     * Es el metodo donde se conecta el clic que da el usuario en la interfaz 
+     * con el fragment 
+     * @param uri 
+     */
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-
+    /**
+     * Metodo onAttach
+     * Metodo que Se llama cuando un fragmento se une primero en su contexto. 
+     * @param context contexto de la actividad
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -91,13 +110,20 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 //                    + " must implement OnFragmentInteractionListener");
 //        }
     }
-
+    /**
+     * Metodo onDetach
+     * Metodo llama inmediatamente antes de la fragmento ya no estar asociado con su actividad
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-
+    /**
+     * Metodo mostrarNoticia
+     * Metodo donde se carga la noticia que se va a mostrar en el fragment
+     * @param noticia recibe una noticia la cual se va a mostrar en la interfaz
+     */
     public void mostrarNoticia (Noticia noticia) {
         this.noticia = noticia;
         titulo = (TextView) getView().findViewById(R.id.titulo_de_detalle_noticia);
@@ -108,7 +134,10 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
 
     }
-
+    /**
+    * interface OnFragmentIteractionListener
+    * @author: Jose Omar Colorado y Jesus Alberto Onofre
+    */
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
