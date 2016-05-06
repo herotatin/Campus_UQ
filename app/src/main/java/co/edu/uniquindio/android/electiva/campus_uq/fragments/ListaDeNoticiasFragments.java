@@ -20,7 +20,10 @@ import java.util.ArrayList;
 import co.edu.uniquindio.android.electiva.campus_uq.R;
 import co.edu.uniquindio.android.electiva.campus_uq.util.AdaptadorDeNoticia;
 import co.edu.uniquindio.android.electiva.campus_uq.vo.Noticia;
-
+/**
+ * Esta es DetalleNoticiaFragment del proyecto campus_UQ de la electiva de moviles
+ * @author: Jose Omar Colorado y Jesus Alberto Onofre
+ */
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -70,7 +73,12 @@ public class ListaDeNoticiasFragments extends Fragment implements AdaptadorDeNot
         fragment.setArguments(args);
         return fragment;
     }
-
+    /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     * @param sabedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +88,10 @@ public class ListaDeNoticiasFragments extends Fragment implements AdaptadorDeNot
         }
     }
 
-
+    /**
+     * Metodo onActivityCreated
+     * dice el fragmento que su actividad ha completado su propia Activity.onCreate () .
+     */
     @Override
     public void onActivityCreated(@Nullable Bundle SavedInstance) {
 
@@ -90,7 +101,10 @@ public class ListaDeNoticiasFragments extends Fragment implements AdaptadorDeNot
         listadoNoticias.setAdapter(adaptador);
         listadoNoticias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
-
+    /**
+     * Metodo onCreateView
+     * Es el metodo crea y devuelve la jerarquía vista asociada con el fragmento.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -102,7 +116,11 @@ public class ListaDeNoticiasFragments extends Fragment implements AdaptadorDeNot
     public void onButtonPressed(Uri uri) {
 
     }
-
+     /**
+     * Metodo onAttach
+     * Metodo que Se llama cuando un fragmento se une primero en su contexto. 
+     * @param context contexto de la actividad
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -116,13 +134,20 @@ public class ListaDeNoticiasFragments extends Fragment implements AdaptadorDeNot
             }
         }
     }
-
+    /**
+     * Metodo onDetach
+     * Metodo llama inmediatamente antes de la fragmento ya no estar asociado con su actividad
+     */
     @Override
     public void onDetach() {
         super.onDetach();
 
     }
-
+    /**
+     * Metodo onClickPosition
+     * Metodo donde se le da clic a una noticia 
+     * @param pos posicion de la noticia seleccionada
+     */
     @Override
     public void onClickPosition(int pos) {
         listener.onNoticiaSeleccionada(pos);
