@@ -31,8 +31,14 @@ import co.edu.uniquindio.android.electiva.campus_uq.fragments.SugerenciasFragmen
 import co.edu.uniquindio.android.electiva.campus_uq.util.Utilidades;
 import co.edu.uniquindio.android.electiva.campus_uq.vo.Noticia;
 
+/**
+ * Esta es la actividad principal del proyecto campus_UQ de la electiva de moviles
+ * @author: Jose Omar Colorado y Jesus Alberto Onofre
+ */
+
 public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFragments.OnNoticiaSeleccionadaListener {
 
+    // Atributos  de la Actividad
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     ActionBar actionBar;
@@ -41,6 +47,13 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
     private ArrayList<Noticia> noticias = new ArrayList<>();
     private Utilidades utilidades;
 
+
+    /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     * @param sabedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
 
     }
 
+    /**
+     * Metodo onCreateOptionsMenu
+     * Metodo donde se especifican el menu de opciones que va a tener la actividad
+     * @param menu le ingresa por parametro el menu de la actividad
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -92,7 +110,12 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
+    /**
+     * Metodo onOptionsItemSelected
+     * Metodo para identificar el menu seleccionado  Puede identificar el elemento 
+     * llamando GetItemID () , que devuelve el identificador único para el elemento de menú
+     * @param item elemento identificado
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -102,7 +125,13 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
         }
         return super.onOptionsItemSelected(item);
     }
-
+    /**
+     * Metodo setupNavigationDrawerContent
+     * Metodo el cual recibe la navegacion del Drawer y donde se encuentran 
+     * todas las opciones de este y cual es seleccionada para asi llamar 
+     * al fragmento correspondiente
+     * @param navigationView recibe una NavigationView
+     */
     private void setupNavigationDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -153,7 +182,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
                 });
     }
 
-
+    /**
+     * Metodo onNoticiaSeleccionada
+     * Metodo Metodo en el cual la actividad escoge las noticias selecionadad
+     * @param position la posicion de la noticia que se selecciona
+     */
     @Override
     public void onNoticiaSeleccionada(int position) {
         setFragment(4);
@@ -165,7 +198,12 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
     }
 
 
-
+    /**
+     * Metodo setFragment
+     * Metodo en cual se compara que menu del NavigationDrawer fue seleccionado y lo manda para el fragmento 
+     * correspondiente
+     * @param position la posicion del menu seleccionado
+     */
     public void setFragment(int position) {
         FragmentManager fragmentManager;
         FragmentTransaction fragmentTransaction;
@@ -223,7 +261,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
         }
     }
 
-
+    /**
+     * Metodo verificarConexion()
+     * Metodo correspondiente para verificar la conexion a la red
+     * y si no cuenta con ella mandar un mensaje de notificacion
+     */
     public boolean verificarConexion(){
         ConnectivityManager ConnectionManager=(ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo=ConnectionManager.getActiveNetworkInfo();
