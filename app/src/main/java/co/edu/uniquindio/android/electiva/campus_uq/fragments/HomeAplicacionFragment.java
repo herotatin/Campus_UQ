@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 
 import co.edu.uniquindio.android.electiva.campus_uq.R;
 import co.edu.uniquindio.android.electiva.campus_uq.activities.MainActivity;
-
+/**
+ * Esta es DetalleNoticiaFragment del proyecto campus_UQ de la electiva de moviles
+ * @author: Jose Omar Colorado y Jesus Alberto Onofre
+ */
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -51,7 +54,12 @@ public class HomeAplicacionFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     * @param sabedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +68,10 @@ public class HomeAplicacionFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    /**
+     * Metodo onCreateView
+     * Es el metodo crea y devuelve la jerarquía vista asociada con el fragmento.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -74,7 +85,12 @@ public class HomeAplicacionFragment extends Fragment {
 
 
 
-    // TODO: Rename method, update argument and hook method into UI event
+    /**
+     * Metodo onButtonPressed
+     * Es el metodo donde se conecta el clic que da el usuario en la interfaz 
+     * con el fragment 
+     * @param uri 
+     */
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -91,7 +107,10 @@ public class HomeAplicacionFragment extends Fragment {
 //                    + " must implement OnFragmentInteractionListener");
 //        }
 //    }
-
+    /**
+     * Metodo onDetach
+     * Metodo llama inmediatamente antes de la fragmento ya no estar asociado con su actividad
+     */
     @Override
     public void onDetach() {
         super.onDetach();
