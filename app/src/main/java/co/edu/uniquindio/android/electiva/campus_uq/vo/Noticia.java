@@ -4,15 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by JoseOmar on 1/05/16.
+ * Esta es la clase Noticia del proyecto campus_UQ de la electiva de moviles
+ * @author: Jose Omar Colorado y Jesus Alberto Onofre
  */
 public class Noticia implements Parcelable {
 
+    //Atributos de la clase noticia
     private String contenido;
     private String fecha;
     private String imagen;
     private String titulo;
-
+    /**
+     * Metodo constructor de la clase Noticia 
+     * El cual recibe todos los atributos de esta clase y los inicializa
+     */ 
     public Noticia(String contenido, String fecha, String imagen,String titulo) {
         this.contenido = contenido;
         this.fecha = fecha;
@@ -24,19 +29,26 @@ public class Noticia implements Parcelable {
         contenido = in.readString();
         imagen = in.readString();
     }
-
+    /**
+     * Metodo obrigatorio del parceLabel
+     */ 
     public static final Creator<Noticia> CREATOR = new Creator<Noticia>() {
         @Override
         public Noticia createFromParcel(Parcel in) {
             return new Noticia(in);
         }
-
+        /**
+        * Metodo newArray que nos el array de noticias
+        * @param size tamanio de las noticias
+        */ 
         @Override
         public Noticia[] newArray(int size) {
             return new Noticia[size];
         }
     };
-
+    /**
+     * Metodos get de la clase noticia
+     */ 
     public String getContenido() {
         return contenido;
     }
@@ -52,7 +64,10 @@ public class Noticia implements Parcelable {
     public String getTitulo() {
         return titulo;
     }
-
+    
+    /**
+     * Metodos set de la clase noticia
+     */ 
     public void setContenido(String contenido) {
         this.contenido = contenido;
     }
