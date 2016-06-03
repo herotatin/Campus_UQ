@@ -65,7 +65,13 @@ public class DetalleDeSugerenciaFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+       /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     *
+     * @param savedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +80,13 @@ public class DetalleDeSugerenciaFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     *
+     * @param savedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,14 +95,21 @@ public class DetalleDeSugerenciaFragment extends Fragment {
         ButterKnife.bind(this,v);
         return v;
     }
-
+    /**
+     * Metodo onButtonPressed
+     * Metodo en el que se observa el boton presionado por el 
+     * usuario
+     */ 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-
+     /**
+     * Metodo onAttach
+     * llamada una vez que el fragmento se asocia con su actividad
+     */ 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -101,7 +120,10 @@ public class DetalleDeSugerenciaFragment extends Fragment {
 //                    + " must implement OnFragmentInteractionListener");
 //        }
     }
-
+    /**
+     * Metodo onDetach
+     * llama inmediatamente antes de la fragmento ya no estar asociado con su actividad
+     */
     @Override
     public void onDetach() {
         super.onDetach();
@@ -124,7 +146,10 @@ public class DetalleDeSugerenciaFragment extends Fragment {
     }
 
 
-
+    /**
+     * Metodo onStart
+     * Metodo que se llama cuando el fragmento es visible para el usuarios
+     */ 
     @Override
     public void onStart() {
         super.onStart();
