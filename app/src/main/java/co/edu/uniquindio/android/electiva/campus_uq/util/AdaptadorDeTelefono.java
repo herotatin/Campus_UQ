@@ -23,7 +23,7 @@ public class AdaptadorDeTelefono extends RecyclerView.Adapter<AdaptadorDeTelefon
     private static OnClickAdaptadorTelefono listener;
 
 
-
+    // Metodo constructor de la clase util AdaptadorDeTelefono
     public AdaptadorDeTelefono(ArrayList<Dependencia> dependencias, DirectorioPorDependenciaFragment listaDepenFragments) {
 
         this.dependencias = dependencias;
@@ -37,18 +37,29 @@ public class AdaptadorDeTelefono extends RecyclerView.Adapter<AdaptadorDeTelefon
         TelefonoViewHolder dependenciaVH = new TelefonoViewHolder(itemView);
         return dependenciaVH;
     }
-
+    /**
+     * Este metodo llama internamente onBindViewHolder (ViewHolder, int) 
+     * para actualizar el contenido RecyclerView.ViewHolder 
+     * con el elemento en la posición dada y también establece algunos campos 
+     * privados para ser usados ​​por RecyclerView
+     */ 
     @Override
     public void onBindViewHolder(TelefonoViewHolder holder, int position) {
         Dependencia depencia= dependencias.get(position);
         holder.binDependencia(depencia);
     }
-
+    /**
+     * Metodo getItemCount
+     * Devuelve el número total de elementos en el conjunto de datos de retención por el adaptador.
+     */ 
     @Override
     public int getItemCount() {
         return dependencias.size();
     }
-
+    /**
+     * meotodo OnClickAdaptadorTelefono
+     * Meotodo en cual se da el click de la posicion del telefono
+     */ 
     public interface OnClickAdaptadorTelefono{
         public void onClickPosition(int pos);
     }
@@ -59,7 +70,9 @@ public class AdaptadorDeTelefono extends RecyclerView.Adapter<AdaptadorDeTelefon
         protected TextView txtNombre;
         protected TextView txtTelefono;
 
-
+        /**
+         * Metodo contructor de la clase estatica TelefonoViewHolde
+         */ 
         public TelefonoViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -67,11 +80,18 @@ public class AdaptadorDeTelefono extends RecyclerView.Adapter<AdaptadorDeTelefon
 
 
         }
-
+        /**
+         * Metodo binDependencia
+         * @param d dependecia que ingresa al metodo
+         */ 
         public void binDependencia(Dependencia d) {
 
         }
-
+        /**
+         * Metodo onClick
+         * Metodo que nos dice el clic que se dio sobre que noticia
+         * @param v View que ingresa al metodo
+         */ 
         @Override
         public void onClick(View v) {
             Log.d("TAG", "Element " + getAdapterPosition() + " clicked telefono" );
