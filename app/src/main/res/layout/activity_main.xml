@@ -6,21 +6,14 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="@bool/fitsSystemWindows">
 
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/status_bar_height"
-            android:background="?colorPrimary"/>
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginTop="@dimen/status_bar_height">
 
         <android.support.v7.widget.Toolbar
@@ -35,10 +28,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pantalla Inicio"
                 android:layout_gravity="center"
                 android:textSize="20sp"
                 android:id="@+id/toolbar_title"
+                android:text="@string/initial_screen"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"/>
 
@@ -50,9 +43,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        </FrameLayout>
+    </LinearLayout>
 
-    <android.support.design.widget.NavigationView
+
+
+
+<android.support.design.widget.NavigationView
 
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"

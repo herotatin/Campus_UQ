@@ -1,6 +1,43 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+    <item android:id="@+id/menu_item_share"
+        android:icon="@drawable/ic_action_social_share"
+        android:orderInCategory="1"
+        android:title="@string/menu_item_share"
+        app:showAsAction="ifRoom"
+        android:tint="@color/md_white_1000">
+        <menu>
+            <item
+                android:id="@+id/share_facebook"
+                android:icon="@drawable/ic_action_facebook"
+                android:orderInCategory="100"
+                app:showAsAction="never"
+                android:title="@string/menu_item_facebook"/>
+            <item
+                android:id="@+id/share_google"
+                android:icon="@drawable/ic_action_google"
+                android:orderInCategory="100"
+                app:showAsAction="never"
+                android:title="@string/menu_item_google"/>
+            <item
+                android:id="@+id/share_twitter"
+                android:icon="@drawable/ic_action_twitter_512"
+                android:orderInCategory="100"
+                app:showAsAction="never"
+                android:title="@string/menu_item_twitter"/>
+
+        </menu>
+    </item>
+
+    <item android:id="@+id/menu_item_send"
+        android:icon="@drawable/ic_action_content_send"
+        android:orderInCategory="2"
+        android:title="@string/menu_item_send"
+        app:showAsAction="ifRoom"
+        android:tint="@color/md_white_1000"/>
+
 </menu>

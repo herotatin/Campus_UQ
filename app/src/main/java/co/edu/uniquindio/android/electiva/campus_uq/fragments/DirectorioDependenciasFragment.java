@@ -1,14 +1,23 @@
 package co.edu.uniquindio.android.electiva.campus_uq.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import co.edu.uniquindio.android.electiva.campus_uq.R;
+import co.edu.uniquindio.android.electiva.campus_uq.activities.MainActivity;
+import co.edu.uniquindio.android.electiva.campus_uq.util.AdaptadorDeDependencias;
+import co.edu.uniquindio.android.electiva.campus_uq.vo.Dependencia;
 
 /**
  * Esta es DirectorioDependenciasFragment del proyecto campus_UQ de la electiva de moviles
@@ -19,13 +28,13 @@ import co.edu.uniquindio.android.electiva.campus_uq.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link DirectorioDependenciasFragment.OnFragmentInteractionListener} interface
+ * {@link DirectorioDependenciasFragment} interface
  * to handle interaction events.
  * Use the {@link DirectorioDependenciasFragment#newInstance} factory method to
  * create an instance of this fragment.
  *
  */
-public class DirectorioDependenciasFragment extends Fragment {
+public class DirectorioDependenciasFragment extends Fragment implements AdaptadorDeDependencias.OnClickAdaptadorDependencia{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,7 +44,11 @@ public class DirectorioDependenciasFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private RecyclerView listadoDependencias;
+    private AdaptadorDeDependencias adaptador;
+
+    private ArrayList<Dependencia> dependencias = new ArrayList<>();
+    private  OnDependenciaSeleccionadaListener mListener;
 
     /**
      * Use this factory method to create a new instance of
@@ -64,11 +77,22 @@ public class DirectorioDependenciasFragment extends Fragment {
      * Metodo onCreate
      * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
      * componentes basicos de la actividad.
-     * @param sabedInstanceState informacion actual que se encuentra guardada de la actividad
+     *
      */
+    @Override
+    public void onStart() {
+        super.onStart();
+        ((MainActivity)getActivity()).getTxtToldBar().setText(R.string.menu_item_directory);
+        ((MainActivity)getActivity()).setFragmentActual(2);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -85,6 +109,28 @@ public class DirectorioDependenciasFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_directorio_dependencias, container, false);
     }
 
+
+    /**
+     * Metodo onActivityCreated
+     * dice el fragmento que su actividad ha completado su propia Activity.onCreate () .
+     */
+    @Override
+    public void onActivityCreated(@Nullable Bundle SavedInstance) {
+
+        super.onCreate(SavedInstance);
+
+
+
+        dependencias.add(new Dependencia("Rectoria","Bloque Administrativo")) ;
+        dependencias.add(new Dependencia("Vicerrectoria","Bloque Administrativo")) ;
+        dependencias.add(new Dependencia("Vicerrectoria Academica","Bloque Administrativo")) ;
+
+
+        listadoDependencias = (RecyclerView) getView().findViewById(R.id.RecViewDirectory);
+        adaptador = new AdaptadorDeDependencias(dependencias,this);
+        listadoDependencias.setAdapter(adaptador);
+        listadoDependencias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    }
     /**
      * Metodo onButtonPressed
      * Es el metodo donde se conecta el clic que da el usuario en la interfaz 
@@ -92,9 +138,7 @@ public class DirectorioDependenciasFragment extends Fragment {
      * @param uri 
      */
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+
     }
     /**
      * Metodo onAttach
@@ -104,12 +148,15 @@ public class DirectorioDependenciasFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
+        Activity activity;
+        if (context instanceof Activity) {
+            activity = (Activity) context;
+            try {
+                mListener = (OnDependenciaSeleccionadaListener) activity;
+            } catch (ClassCastException e) {
+                throw new ClassCastException(activity.toString() + " debe implementar la interfaz OnPeliculaSeleccionadaListener");
+            }
+        }
     }
     /**
      * Metodo onDetach
@@ -121,18 +168,12 @@ public class DirectorioDependenciasFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onClickPosition(int pos) {
+        mListener.onDependenciaSeleccionada(pos);
+    }
+
+    public interface OnDependenciaSeleccionadaListener {
+        void onDependenciaSeleccionada(int position);
     }
 }

@@ -7,14 +7,9 @@
     tools:context="co.edu.uniquindio.android.electiva.campus_uq.fragments.SugerenciasFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:textAlignment="center"/>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_flotante"
+        android:id="@+id/nueva_sugerencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_action_content_mail"
@@ -27,12 +22,13 @@
         android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:clickable="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ayudanos a mejorar nuestra App. Regalame tu sugerencia y te prometemos atenderla"
+        android:text="@string/review_wel_mensaje"
         android:id="@+id/textView2"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"

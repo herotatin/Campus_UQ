@@ -1,2 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <string name="app_name">UQ Campus </string>
+    <string name="action_settings">Settings</string>
+    <string name="initial_screen">Home</string>
+    <string name="write_here">Write Here</string>
+    <string name="title_fragment_directory">DIRECTORY</string>
+    <string name="welcome_message">The University of the Quindio in way to the
+    institutional accreditation made this application to belong to big
+        It helps the university community</string>
+    <string name="direction_text">Carrera 15 Calle 12 Norte Armenia, Quindío.</string>
+    <string name="title_detail_new">Title</string>
+    <string name="without_conexion">Without Internet Conecction</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="review_wel_mensaje">Help us to improve our App. Give me your suggestion and we promise you to attend to it.</string>
+    <string name="text_year">Year</string>
+    <string name="texto_detalle_de_pelicula">Al ver que la vida en la
+    Tierra está llegando a su fin, un grupo de exploradores decide
+    embarcarse en la que puede ser la misión más importante de la historia
+    de la humanidad y emprender un viaje más allá de nuestra galaxia en el
+    que descubrirán si las estrellas pueden albergar el futuro de la raza
+    humana...</string>
+    <string name="menu_item_send">Send</string>
+    <string name="menu_item_share">Share</string>
+    <string name="menu_item_directory">Directory</string>
+    <string name="menu_item_language">Cambio Idioma</string>
+    <string name="menu_item_news">News</string>
+    <string name="menu_item_page">Go to the Web</string>
+    <string name="menu_item_reviews">Reviews</string>
+    <string name="review_message">Thank You for the suggested, we attend it quickly.</string>
+    <string name="menu_item_facebook">Facebook</string>
+    <string name="menu_item_google">Google</string>
+    <string name="menu_item_twitter">Twitter</string>
+    <string name="realizar_tuit">Tweet</string>
+</resources>

@@ -1,21 +1,36 @@
 package co.edu.uniquindio.android.electiva.campus_uq.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
-import co.edu.uniquindio.android.electiva.campus_uq.R;
-import co.edu.uniquindio.android.electiva.campus_uq.vo.Noticia;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
-/**
- * Esta es DetalleNoticiaFragment del proyecto campus_UQ de la electiva de moviles
- * @author: Jose Omar Colorado y Jesus Alberto Onofre
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import co.edu.uniquindio.android.electiva.campus_uq.R;
+import co.edu.uniquindio.android.electiva.campus_uq.activities.MainActivity;
+import co.edu.uniquindio.android.electiva.campus_uq.util.Utilidades;
+import co.edu.uniquindio.android.electiva.campus_uq.vo.Noticia;
+import io.fabric.sdk.android.Fabric;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -24,10 +39,9 @@ import co.edu.uniquindio.android.electiva.campus_uq.vo.Noticia;
  * Use the {@link DetalleNoticiaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DetalleNoticiaFragment extends Fragment implements View.OnClickListener {
+public class DetalleNoticiaFragment extends Fragment implements View.OnClickListener, View.OnCreateContextMenuListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    // atributos de DetalleNoticiaFragment
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Noticia noticia;
@@ -36,6 +50,13 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Utilidades utilidades;
+
+    @BindView(R.id.btn_hacer_tuit)
+    protected Button btnCompartirTwitter;
+
+    @BindView(R.id.twitter_login_button)
+    protected TwitterLoginButton btnloginTwitter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -61,9 +82,21 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         return fragment;
     }
 
+    /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     *
+     * @param savedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -71,33 +104,75 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 
 
     }
-    /**
-     * Metodo onCreate
-     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
-     * componentes basicos de la actividad.
-     * @param sabedInstanceState informacion actual que se encuentra guardada de la actividad
-     */
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        utilidades = new Utilidades();
+        View v = inflater.inflate(R.layout.fragment_detalle_noticia, container, false);
+        ButterKnife.bind(this, v);
+
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(utilidades.TWITTER_KEY, utilidades.TWITTER_SECRET);
+        Fabric.with(super.getActivity(), new TwitterCore(authConfig), new TweetComposer());
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalle_noticia, container, false);
+
+
+        btnCompartirTwitter.setOnClickListener(this);
+        btnloginTwitter.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                TwitterSession session = result.data;
+                String msg = "@" + session.getUserName() + " logged in! (#" +
+                        session.getUserId() + ")";
+                Utilidades.mostrarMensajeConsola(msg);
+                btnloginTwitter.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                Log.d("TwitterKit", "Login with Twitter failure", exception);
+            }
+        });
+
+
+        return v;
+
+    }
+
+
+
+    @OnClick(R.id.btn_hacer_tuit)
+    public void tuit(View view) {
+
+        verifyLoginTw();
+        if (TweetComposer.getInstance() != null)
+        {
+
+        }
+
     }
 
     /**
      * Metodo onButtonPressed
-     * Es el metodo donde se conecta el clic que da el usuario en la interfaz 
-     * con el fragment 
-     * @param uri 
+     * Es el metodo donde se conecta el clic que da el usuario en la interfaz
+     * con el fragment
+     *
+     * @param uri
      */
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
+
     /**
      * Metodo onAttach
-     * Metodo que Se llama cuando un fragmento se une primero en su contexto. 
+     * Metodo que Se llama cuando un fragmento se une primero en su contexto.
+     *
      * @param context contexto de la actividad
      */
     @Override
@@ -110,6 +185,7 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 //                    + " must implement OnFragmentInteractionListener");
 //        }
     }
+
     /**
      * Metodo onDetach
      * Metodo llama inmediatamente antes de la fragmento ya no estar asociado con su actividad
@@ -119,25 +195,26 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         super.onDetach();
         mListener = null;
     }
+
     /**
      * Metodo mostrarNoticia
      * Metodo donde se carga la noticia que se va a mostrar en el fragment
+     *
      * @param noticia recibe una noticia la cual se va a mostrar en la interfaz
      */
-    public void mostrarNoticia (Noticia noticia) {
+    public void mostrarNoticia(Noticia noticia) {
         this.noticia = noticia;
         titulo = (TextView) getView().findViewById(R.id.titulo_de_detalle_noticia);
         titulo.setText(noticia.getTitulo());
 
+
     }
+
     @Override
     public void onClick(View v) {
 
     }
-    /**
-    * interface OnFragmentIteractionListener
-    * @author: Jose Omar Colorado y Jesus Alberto Onofre
-    */
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -152,4 +229,43 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ((MainActivity) getActivity()).getTxtToldBar().setText(R.string.menu_item_news);
+        ((MainActivity) getActivity()).setFragmentActual(4);
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent
+            data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == getActivity().RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String fbData = bundle.toString();
+            Utilidades.mostrarMensajeConsola("I am inside resultcode " + fbData);
+        } else {
+            Utilidades.mostrarMensajeConsola("I have no idea what is happening :( " + data.getExtras().toString());
+        }
+    }
+
+    public boolean verifyLoginTw(){
+        boolean ans = true;
+        TwitterSession session = Twitter.getSessionManager().getActiveSession();
+        if (session != null) {
+            btnloginTwitter.setVisibility(View.INVISIBLE);
+            //btnloginTwitter.setPressed(true);
+            Utilidades.mostrarMensajeConsola("Sesion iniciada por:" + session.getUserName());
+        } else {
+            Utilidades.mostrarMensajeConsola("No se inició la sesión");
+            ans = false;
+
+        }
+
+        return ans;
+    }
+
+
 }

@@ -2,32 +2,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+            android:id="@+id/menu_navigation">
         <item
             android:checked="true"
             android:id="@+id/item_navigation_drawer_home"
             android:icon="@drawable/ic_action_action_home"
-            android:title="Inicio" />
+            android:title="@string/initial_screen"
+            />
         <item
             android:id="@+id/item_navigation_drawer_news"
             android:icon="@drawable/ic_action_news"
-            android:title="Noticias" />
+            android:title="@string/menu_item_news"
+            />
         <item
             android:id="@+id/item_navigation_drawer_directory"
             android:icon="@drawable/ic_action_communication_quick_contacts_dialer"
-            android:title="Directorio" />
+            android:title="@string/menu_item_directory" />
         <item
             android:id="@+id/item_navigation_drawer_review"
             android:icon="@drawable/ic_action_maps_rate_review"
-            android:title="Sugerencias" />
+            android:title="@string/menu_item_reviews" />
         <item
             android:id="@+id/item_navigation_drawer_page"
-            android:icon="@drawable/ic_action_action_language"
-            android:title="Ir a Pagina Web" />
+            android:icon="@drawable/ic_action_url"
+            android:title="@string/menu_item_page" />
         <item
             android:id="@+id/item_navigation_drawer_languaje"
-            android:icon="@drawable/ic_action_content_send"
-            android:title="Lenguaje" />
+            android:icon="@drawable/ic_action_action_language"
+            android:title="@string/menu_item_language" />
 
     </group>
 

@@ -2,31 +2,34 @@ package co.edu.uniquindio.android.electiva.campus_uq.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Base64;
+import android.util.Log;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 
 /**
- * Esta es la clase utilidades del proyecto campus_UQ de la electiva de moviles
- * @author: Jose Omar Colorado y Jesus Alberto Onofre
+ * Created by JoseOmar on 26/04/16.
  */
 public class Utilidades {
 
-    // Variables de la clase utilidades
+
     public final static String MIS_PREFERENCIAS = "MisPreferencias";
     public final static String LENGUAJE_DE_PREFERENCIA = "languaje_preferences";
     public final static String LENGUAJE_ES = "es";
     public final static String LENGUAJE_EN = "en";
+    public static final String TWITTER_KEY = "HKuWY374pZGwCisFFtqFlVaFV";
+    public static final String TWITTER_SECRET = "uk5nDbMAlygmcU7fT1GfhsQ6zDxBNgtaO3tj6mQVUaLXOh6o1e";
 
 
-    /**
-     * Metodo cambiarIdioma 
-     * este es el metodo que se utiliza para realizar el cambio de
-     * idioma de la aplicacion
-     * @param context recibe como parametro un contexto
-     */ 
+
     public static void cambiarIdioma(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(MIS_PREFERENCIAS, context.MODE_PRIVATE);
         String language = prefs.getString(LENGUAJE_DE_PREFERENCIA, LENGUAJE_ES);
@@ -40,12 +43,7 @@ public class Utilidades {
         editor.commit();
         obtenerLenguaje(context);
     }
-    /**
-     * Metodo obtenerLenguaje
-     * Se obtine el lenguaje actual del dispositivo y cambia el de la
-     * app porque se obtiene
-     * @param context Recibe el context actual 
-     */ 
+
     public static void obtenerLenguaje(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(MIS_PREFERENCIAS, context.MODE_PRIVATE);
         String language = prefs.getString(LENGUAJE_DE_PREFERENCIA, LENGUAJE_ES);
@@ -55,11 +53,7 @@ public class Utilidades {
         config.locale = locale;
         context.getApplicationContext().getResources().updateConfiguration(config, null);
     }
-    /**
-     * Metodo verificarConexion
-     * Metodo que se utiliza para verificar la conxion a la red
-     * @param c contexto con la conexion
-     */ 
+
     public static boolean verificarConexion(Context c){
         ConnectivityManager ConnectionManager=(ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo=ConnectionManager.getActiveNetworkInfo();
@@ -75,5 +69,23 @@ public class Utilidades {
 
     }
 
+    public static void getKeyHash(Context context) {
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String sign = Base64.encodeToString(md.digest(),
+                        Base64.DEFAULT);
+                Log.e("Mi clave HASH:", sign);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d("prueba", "1 KeyHash Error: " + e.getMessage()); } catch (NoSuchAlgorithmException e) {
+            Log.d("prueba", "2 KeyHash Error: " + e.getMessage()); }
+    }
+
+    public static void mostrarMensajeConsola(String m){
+        Log.d("Por Consola", "2 KeyHash Error: " + m);
+    }
 
 }

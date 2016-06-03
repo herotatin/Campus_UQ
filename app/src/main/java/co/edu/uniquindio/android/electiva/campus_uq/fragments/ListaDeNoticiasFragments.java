@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import co.edu.uniquindio.android.electiva.campus_uq.R;
+import co.edu.uniquindio.android.electiva.campus_uq.activities.MainActivity;
 import co.edu.uniquindio.android.electiva.campus_uq.util.AdaptadorDeNoticia;
 import co.edu.uniquindio.android.electiva.campus_uq.vo.Noticia;
 /**
@@ -77,7 +78,7 @@ public class ListaDeNoticiasFragments extends Fragment implements AdaptadorDeNot
      * Metodo onCreate
      * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
      * componentes basicos de la actividad.
-     * @param sabedInstanceState informacion actual que se encuentra guardada de la actividad
+     * @param savedInstanceState informacion actual que se encuentra guardada de la actividad
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -185,5 +186,13 @@ public class ListaDeNoticiasFragments extends Fragment implements AdaptadorDeNot
 
     public interface OnNoticiaSeleccionadaListener {
         void onNoticiaSeleccionada(int position);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //((MainActivity)getActivity()).getSupportActionBar().setTitle("Noticias");
+        ((MainActivity)getActivity()).getTxtToldBar().setText(R.string.menu_item_news);
+        ((MainActivity)getActivity()).setFragmentActual(1);
     }
 }

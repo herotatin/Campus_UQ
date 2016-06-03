@@ -58,7 +58,7 @@ public class SinConexionFragment extends Fragment {
      * Metodo onCreate
      * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
      * componentes basicos de la actividad.
-     * @param sabedInstanceState informacion actual que se encuentra guardada de la actividad
+     * @param savedInstanceState informacion actual que se encuentra guardada de la actividad
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {

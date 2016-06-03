@@ -25,7 +25,7 @@ public class AdaptadorDeNoticia extends RecyclerView.Adapter<AdaptadorDeNoticia.
 
     /**
      * Constructor AdaptadorDeNoticia
-     * @param noticia este parametro es una lista de noticias
+     * @param noticias este parametro es una lista de noticias
      * @param listaDeNoticiasFragments Son todas las noticias en el fragmento
      */
     public AdaptadorDeNoticia(ArrayList<Noticia> noticias, ListaDeNoticiasFragments listaDeNoticiasFragments) {
@@ -111,7 +111,7 @@ public class AdaptadorDeNoticia extends RecyclerView.Adapter<AdaptadorDeNoticia.
          */ 
         @Override
         public void onClick(View v) {
-            Log.d("TAG", "Element " + getAdapterPosition() + " clicked. " + txtTitulo.getText());
+            Log.d("TAG", "Element " + getAdapterPosition() + " clicked " + txtTitulo.getText());
             listener.onClickPosition(getAdapterPosition());
         }
 

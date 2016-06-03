@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <fragment
+        android:id="@+id/fragmento_lista_peliculas"
+        class="co.edu.uniquindio.android.electiva.campus_uq.fragments.ListaDeNoticiasFragments"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_lista_de_noticias_fragments" />
+    <fragment
+        android:id="@+id/fragmento_detalle_pelicula"
+        class="co.edu.uniquindio.android.electiva.campus_uq.fragments.DetalleNoticiaFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:layout_margin="5dp"/>
+</LinearLayout>

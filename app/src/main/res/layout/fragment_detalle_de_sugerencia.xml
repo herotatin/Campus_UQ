@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/notas"
+    android:orientation="vertical"
+    tools:context="co.edu.uniquindio.android.electiva.campus_uq.fragments.DetalleDeSugerenciaFragment"
+    android:weightSum="1">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/txt_sugerencia"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="top"
+        android:hint="@string/write_here"
+        android:textColorHint="@color/md_grey_700"/>
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/enviar_sugerencia"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src = "@drawable/ic_action_content_send"-->
+        <!--android:tint="@color/colorPrimaryDark"-->
+        <!--android:layout_marginRight="61dp"-->
+        <!--android:layout_marginEnd="61dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginBottom="59dp"-->
+        <!--android:clickable="true" />-->
+</RelativeLayout>
