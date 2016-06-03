@@ -422,7 +422,10 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
     public TextView getTxtToldBar() {
         return txtToolbar;
     }
-
+    /**
+     * Metodo setFontMenu
+     * Metodo en el cual se le da la fuente al menu 
+     */ 
     public void setFontMenu() {
         NavigationView navView = (NavigationView) findViewById(R.id.navigation_view);
         Menu m = navView.getMenu();
@@ -442,7 +445,9 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
             applyFontToMenuItem(mi);
         }
     }
-
+    /**
+     * Metodo applyFontToMenuItem
+     */ 
     private void applyFontToMenuItem(MenuItem mi) {
 
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
@@ -450,7 +455,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
         mi.setTitle(mNewTitle);
 
     }
-
+    /**
+     * Metodo shareIt
+     * Metodo que sirve para realizar una conexion
+     * y tranferir
+     */ 
     private void shareIt(String s) {
 //sharing implementation here
 
@@ -461,7 +470,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
         this.startActivity(intent);
 
     }
-
+    /**
+     * Metodo verifyAndShareFace
+     * Metodo en el cual se verifica que el usuario tenga 
+     * la session activa en el facebook
+     */ 
     public void verifyAndShareFace(){
         if(LoginManager.getInstance() == null)
         {
@@ -480,7 +493,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
     }
 
 
-
+    /**
+     * Metodo  verifyAndShareTw
+     * metodo en el cual se verifica que el usuario
+     * tenga la session activa en twitter
+     */ 
     public void verifyAndShareTw(MenuView.ItemView itemView){
 
 
@@ -492,6 +509,12 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
             Utilidades.mostrarMensajeConsola("No se inició la sesión");
         }
     }
+    /**
+     * Metodo onActivityResult
+     * Cuando el usuario se realiza con la actividad
+     * y vuelve posterior, el sistema llama metodo de su actividad onActivityResult (). 
+     * Este metodo incluye tres argumentos:
+     */ 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
@@ -501,7 +524,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
                 data); }
 
 
-
+    /**
+     * metodo share
+     * metodo en el cual se le da las referencias a lo que se va a 
+     * igresar o visualizar en la app
+     */ 
     public void share(String nameApp, String imagePath, String message) {
         try {
             List<Intent> targetedShareIntents = new ArrayList<Intent>();
@@ -540,7 +567,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
                             + e.getMessage());
         }
     }
-
+    /**
+     * Metodo verificarMenuItem
+     * en este metodo se verifican los items que tiene el menu 
+     * de ka app
+     */ 
     private void verificarMenuItems() {
         if (menuMain != null) {
             for (int i = 0; i < menuMain.size(); i++) {
@@ -556,7 +587,10 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
             }
         }
     }
-
+    /**
+     * Metodo tintAllIcons
+     * Metodo donde se le da el color a todos los inonos del menu
+     */ 
     public void tintAllIcons(Menu menu, final int color) {
         for (int i = 0; i < menu.size(); ++i) {
             final MenuItem item = menu.getItem(i);
@@ -564,7 +598,11 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
 
         }
     }
-
+    /**
+     * Metodo tintMenuItemIcon
+     * se utiliza para darles los iconos del menu tint
+     * el color de estos iconos
+     */ 
     private void tintMenuItemIcon(int color, MenuItem item) {
         final Drawable drawable = item.getIcon();
         if (drawable != null) {
@@ -587,12 +625,21 @@ public class MainActivity extends AppCompatActivity implements ListaDeNoticiasFr
         setFragment(fragmentActual);
 
     }
-
+    /**
+     * Metodo onDependenciaSeleccionada
+     * Se le ingresa la posicion de la dependencia y  
+     * se le da el fragmento actual
+     */ 
     @Override
     public void onDependenciaSeleccionada(int position) {
         fragmentActual = 6;
         setFragment(fragmentActual);
     }
+    /**
+        *Metodo onTelefonoSeleccionado
+        *Metodo que se le ingresa la posicion del telefono que se va a llamar
+        *Y realiza la llamada
+    */
 
     @Override
     public void onTelefonoSeleccionado(int position) {
