@@ -65,7 +65,13 @@ public class DirectorioPorDependenciaFragment extends Fragment implements Adapta
         fragment.setArguments(args);
         return fragment;
     }
-
+     /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     *
+     * @param savedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,21 +103,32 @@ public class DirectorioPorDependenciaFragment extends Fragment implements Adapta
        listadoDependencias.setAdapter(adaptador);
         listadoDependencias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
-
+      /**
+     * Metodo onCreateView
+     * crea y devuelve la jerarquía vista asociada con el fragmento.
+     */ 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_directorio_por_dependencia, container, false);
     }
-
+    /**
+     * metodo onButtonPressed
+     * Metodo en cual tenemos el boton precionado
+     */ 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-
+    /**
+     * Metodo onAttach
+     * Metodo que Se llama cuando un fragmento se une primero en su contexto.
+     *
+     * @param context contexto de la actividad
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -125,13 +142,20 @@ public class DirectorioPorDependenciaFragment extends Fragment implements Adapta
             }
         }
     }
-
+    /**
+     * Metodo onDetach
+     * Metodo llama inmediatamente antes de la fragmento ya no estar asociado con su actividad
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-
+    /**
+     * Metodo onClickPosition
+     * Metodo en que da la posicion del clic 
+     * que hace el usuario
+     */ 
     @Override
     public void onClickPosition(int pos) {
         listener.onTelefonoSeleccionado(pos);
@@ -164,7 +188,11 @@ public class DirectorioPorDependenciaFragment extends Fragment implements Adapta
         //titulo.setText(dependencia.getNombre());
 
     }
-
+    /**
+     * Metodo OnTelefonoSeleccionadoListener
+     * Metodo en cual se da la posiccion del telefono 
+     * seleccionado
+     */ 
     public interface OnTelefonoSeleccionadoListener {
         void onTelefonoSeleccionado(int position);
     }
