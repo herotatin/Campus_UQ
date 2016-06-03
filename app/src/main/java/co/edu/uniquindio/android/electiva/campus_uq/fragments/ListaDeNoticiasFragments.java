@@ -170,24 +170,35 @@ public class ListaDeNoticiasFragments extends Fragment implements AdaptadorDeNot
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
+    /**
+     * metodo onCreateOptionsMenu 
+     * Inicializar el contenido del menú de opciones estándar de la activida
+     */ 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         super.onCreateOptionsMenu(menu, inflater);
     }
-
+    
+    /**
+     * Metodo onOptionsItemSelected 
+     * Este gancho se llama cada vez que se selecciona un elemento en el menú de opciones.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
     }
-
+    // interfaz OnNoticiaSeleccionadaListener 
+    // en la cual le ingresa la posicion de la noticia seleccionada
     public interface OnNoticiaSeleccionadaListener {
         void onNoticiaSeleccionada(int position);
     }
-
+    /**
+     * Metodo onStart()
+     * hace que el fragmento visible para el usuario (sobre la base de su actividad que contiene de ser iniciado).
+     */ 
     @Override
     public void onStart() {
         super.onStart();
