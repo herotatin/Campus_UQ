@@ -20,7 +20,7 @@ import java.util.Locale;
  */
 public class Utilidades {
 
-
+    //Atributos de la clase utilidades
     public final static String MIS_PREFERENCIAS = "MisPreferencias";
     public final static String LENGUAJE_DE_PREFERENCIA = "languaje_preferences";
     public final static String LENGUAJE_ES = "es";
@@ -29,7 +29,11 @@ public class Utilidades {
     public static final String TWITTER_SECRET = "uk5nDbMAlygmcU7fT1GfhsQ6zDxBNgtaO3tj6mQVUaLXOh6o1e";
 
 
-
+    /**
+     * Metodo cambiarIdioma
+     * Metodo que s eutiliza para realizar un cambio 
+     * del leguanje de app
+     */ 
     public static void cambiarIdioma(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(MIS_PREFERENCIAS, context.MODE_PRIVATE);
         String language = prefs.getString(LENGUAJE_DE_PREFERENCIA, LENGUAJE_ES);
@@ -43,7 +47,10 @@ public class Utilidades {
         editor.commit();
         obtenerLenguaje(context);
     }
-
+    /**
+     * metodo obtenerLenguaje
+     * Metodo que se utiliza para obtener el leguaje de la app
+     */ 
     public static void obtenerLenguaje(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(MIS_PREFERENCIAS, context.MODE_PRIVATE);
         String language = prefs.getString(LENGUAJE_DE_PREFERENCIA, LENGUAJE_ES);
@@ -53,7 +60,11 @@ public class Utilidades {
         config.locale = locale;
         context.getApplicationContext().getResources().updateConfiguration(config, null);
     }
-
+    /**
+     * Metodo verificarConexion
+     * Metodo por el cual se verifica la conexion 
+     * de la app no la reb
+     */  
     public static boolean verificarConexion(Context c){
         ConnectivityManager ConnectionManager=(ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo=ConnectionManager.getActiveNetworkInfo();
@@ -68,6 +79,9 @@ public class Utilidades {
 
 
     }
+    /**
+     * Metodo getKeyHash
+     */ 
 
     public static void getKeyHash(Context context) {
         try {
@@ -83,7 +97,10 @@ public class Utilidades {
             Log.d("prueba", "1 KeyHash Error: " + e.getMessage()); } catch (NoSuchAlgorithmException e) {
             Log.d("prueba", "2 KeyHash Error: " + e.getMessage()); }
     }
-
+    /**
+     * Metodo mostrarMensajeConsola
+     * Metodo que se utiliza para mostrar un mensaje por consola
+     */ 
     public static void mostrarMensajeConsola(String m){
         Log.d("Por Consola", "2 KeyHash Error: " + m);
     }
