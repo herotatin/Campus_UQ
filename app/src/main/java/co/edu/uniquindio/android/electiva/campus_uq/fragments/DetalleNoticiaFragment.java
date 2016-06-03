@@ -104,7 +104,11 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
 
 
     }
-
+    
+    /**
+     * Metodo onCreateView
+     * crea y devuelve la jerarquía vista asociada con el fragmento.
+     */ 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -131,7 +135,9 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
                 Utilidades.mostrarMensajeConsola(msg);
                 btnloginTwitter.setVisibility(View.INVISIBLE);
             }
-
+            /**
+             * Metodo en el cual tenemos la exception de twuitter
+             */ 
             @Override
             public void failure(TwitterException exception) {
                 Log.d("TwitterKit", "Login with Twitter failure", exception);
@@ -144,7 +150,11 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
     }
 
 
-
+    /**
+     * Metodo tuit
+     * Metodo que recibe el tuit que
+     * se va a realizar
+     */ 
     @OnClick(R.id.btn_hacer_tuit)
     public void tuit(View view) {
 
@@ -229,7 +239,10 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
+    /**
+     * Metodo onStart()
+     * hace que el fragmento visible para el usuario (sobre la base de su actividad que contiene de ser iniciado).
+     */ 
     @Override
     public void onStart() {
         super.onStart();
@@ -237,7 +250,10 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
         ((MainActivity) getActivity()).setFragmentActual(4);
     }
 
-
+    /**
+     * Metodo onActivityResult
+     * Recibe el resultado de una llamada previa a startActivityForResult (
+     */ 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent
             data) {
@@ -250,7 +266,11 @@ public class DetalleNoticiaFragment extends Fragment implements View.OnClickList
             Utilidades.mostrarMensajeConsola("I have no idea what is happening :( " + data.getExtras().toString());
         }
     }
-
+    /**
+     * metodo verifyLoginTw
+     * Metodo que se utiliza para verificar el 
+     * login de twitter
+     */ 
     public boolean verifyLoginTw(){
         boolean ans = true;
         TwitterSession session = Twitter.getSessionManager().getActiveSession();
