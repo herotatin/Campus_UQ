@@ -85,7 +85,13 @@ public class DirectorioDependenciasFragment extends Fragment implements Adaptado
         ((MainActivity)getActivity()).getTxtToldBar().setText(R.string.menu_item_directory);
         ((MainActivity)getActivity()).setFragmentActual(2);
     }
-
+     /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     *
+     * @param savedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -167,12 +173,18 @@ public class DirectorioDependenciasFragment extends Fragment implements Adaptado
         super.onDetach();
         mListener = null;
     }
-
+    /**
+     * Metodo onClickPosition
+     * Metodo el cual se le ingresa la posicion de la dependencia seleccionada
+     */ 
     @Override
     public void onClickPosition(int pos) {
         mListener.onDependenciaSeleccionada(pos);
     }
-
+    /**
+     * Metodo OnDependenciaSeleccionadaListene
+     * Metodo en cual nos da la dependecia que el usuario selecciono
+     */ 
     public interface OnDependenciaSeleccionadaListener {
         void onDependenciaSeleccionada(int position);
     }
