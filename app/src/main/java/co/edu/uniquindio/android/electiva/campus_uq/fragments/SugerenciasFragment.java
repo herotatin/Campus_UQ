@@ -59,7 +59,13 @@ public class SugerenciasFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    /**
+     * Metodo onCreate
+     * Es el metodo que se invoca cuando el sistema crea la actividad, se inicializan los
+     * componentes basicos de la actividad.
+     *
+     * @param savedInstanceState informacion actual que se encuentra guardada de la actividad
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +74,10 @@ public class SugerenciasFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    /**
+     * Metodo onCreateView
+     * crea y devuelve la jerarquía vista asociada con el fragmento.
+     */ 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,7 +93,12 @@ public class SugerenciasFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
-
+    /**
+     * Metodo onAttach
+     * Metodo que Se llama cuando un fragmento se une primero en su contexto.
+     *
+     * @param context contexto de la actividad
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -95,7 +109,10 @@ public class SugerenciasFragment extends Fragment {
 //                    + " must implement OnFragmentInteractionListener");
 //        }
     }
-
+     /**
+     * Metodo onDetach
+     * Metodo llama inmediatamente antes de la fragmento ya no estar asociado con su actividad
+     */
     @Override
     public void onDetach() {
         super.onDetach();
@@ -116,13 +133,19 @@ public class SugerenciasFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
+    /**
+     * Metodo nuevarSug
+     * Metodo en el cual se ingresa la nueva sugerencia
+     */ 
     @OnClick(R.id.nueva_sugerencia)
     public void nuevarSug()
     {
         ((MainActivity)getActivity()).setFragment(5);
     }
-
+    /**
+     * Metodo onStart()
+     * hace que el fragmento visible para el usuario (sobre la base de su actividad que contiene de ser iniciado).
+     */ 
     @Override
     public void onStart() {
         super.onStart();
