@@ -38,7 +38,9 @@ public class Noticia implements Parcelable {
         public Noticia createFromParcel(Parcel in) {
             return new Noticia(in);
         }
-
+        /**
+         * Metodo para crar una arreglo de noticias
+         */ 
         @Override
         public Noticia[] newArray(int size) {
             return new Noticia[size];
