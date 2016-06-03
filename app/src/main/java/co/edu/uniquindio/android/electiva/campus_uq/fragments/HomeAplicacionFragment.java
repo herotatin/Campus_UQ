@@ -67,6 +67,11 @@ public class HomeAplicacionFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    
+    /**
+     * Metodo onCreateView
+     * crea y devuelve la jerarquía vista asociada con el fragmento.
+     */ 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,7 +84,13 @@ public class HomeAplicacionFragment extends Fragment {
     }
 
 
-
+    /**
+     * Metodo onButtonPressed
+     * Es el metodo donde se conecta el clic que da el usuario en la interfaz
+     * con el fragment
+     *
+     * @param uri
+     */
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -87,7 +98,12 @@ public class HomeAplicacionFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
-
+    /**
+     * Metodo onAttach
+     * Metodo que Se llama cuando un fragmento se une primero en su contexto.
+     *
+     * @param context contexto de la actividad
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -99,13 +115,19 @@ public class HomeAplicacionFragment extends Fragment {
 //        }
     }
 
-
+    /**
+     * Metodo onDetach
+     * Metodo llama inmediatamente antes de la fragmento ya no estar asociado con su actividad
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-
+    /**
+     * Metodo onStart()
+     * hace que el fragmento visible para el usuario (sobre la base de su actividad que contiene de ser iniciado).
+     */
     @Override
     public void onStart() {
         super.onStart();
